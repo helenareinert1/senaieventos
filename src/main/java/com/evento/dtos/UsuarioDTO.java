@@ -1,15 +1,18 @@
 package com.evento.dtos;
 
-import java.util.Date;
+import com.evento.enums.Pefil;
 
-public class UsuarioDTO {
+import java.util.Date;
+import java.util.List;
+
+public class    UsuarioDTO {
     private Long id;
     private String nome;
     private String email;
     private String senha;
     private String cpf;
     private Date dataNascimento;
-    private String perfil;
+    private List<Pefil> perfis;
     private boolean verificado;
 
     public UsuarioDTO(){}
@@ -62,12 +65,12 @@ public class UsuarioDTO {
         this.dataNascimento = dataNascimento;
     }
 
-    public String getPerfil() {
-        return perfil;
+    public List<Pefil> getPerfis() {
+        return perfis;
     }
 
-    public void setPerfil(String perfil) {
-        this.perfil = perfil;
+    public void setPerfil(List<Pefil> perfis) {
+        this.perfis = perfis;
     }
 
     public boolean isVerificado() {
