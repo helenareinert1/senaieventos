@@ -1,14 +1,21 @@
 package com.evento.models;
 
 import com.evento.enums.Estado;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
+@Entity
+@Table(name = "cidades")
 public class Cidade {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    @Enumerated(EnumType.STRING)
     private Estado estado;
+
+    public Cidade() {}
 
     public Cidade(Long id, String nome, Estado estado) {
         this.id = id;
@@ -44,10 +51,11 @@ public class Cidade {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Cidade cidade = (Cidade) o;
-        return Objects.equals(id, cidade.id);
+        return Objects.equals(id, cidade.id) && Objects.equals(nome, cidade.nome) && Objects.equals(estado, cidade.estado);
     }
+
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hash(id, nome, estado);
     }
 }
